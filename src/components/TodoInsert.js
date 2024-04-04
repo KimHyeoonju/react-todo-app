@@ -2,13 +2,14 @@ import { useState } from "react";
 import { MdAdd } from "react-icons/md";
 import "../styles/TodoInsert.scss";
 
-const TodoInsert = () => {
+const TodoInsert = ({ onInsert }) => {
   // [] 배열
   // [값, 함수]
   // useState(초기값);
   const [value, setValue] = useState("");
 
   const onSubmit = event => {
+    onInsert(value);
     // submit 이벤트는 브라우저에서 새로고침 발생시킴
     // 이를 방지하기 위해 아래 함수 호출
     event.preventDefault();
@@ -29,7 +30,7 @@ const TodoInsert = () => {
         onChange={onChange}
         value={value}
       />
-      <button type="button">
+      <button type="Submit">
         {/* 리액트 아이콘 */}
         <MdAdd />
       </button>
